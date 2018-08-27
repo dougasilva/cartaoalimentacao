@@ -1,0 +1,14 @@
+    <br /><br />
+    <div class="jumbotron col-md-10 col-md-offset-1">
+    <div class="container">
+    <div class="form-group col-md-8 col-md-offset-1">
+    <br /><br />
+      <h3>Importar Arquivo CSV</h3>
+      <%= form_tag import_arquivos_path, multipart: true do %>
+        <%= file_field_tag :file %>
+        <br />
+        <%= submit_tag "Importar" %>
+      <% end %>
+    </div>
+    </div>
+    </div>
