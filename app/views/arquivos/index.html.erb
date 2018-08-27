@@ -1,0 +1,71 @@
+
+<div class="row">
+    <p id="notice"><%= notice %></p>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>Dados Importados</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-11">
+    <h2>Profissionais com mais de 1 ano de Registro</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Token</th>
+          <th>Data Admissão</th>
+          <th>Saldo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @antigos.each do |arquivo| %>
+          <tr>
+            <td><%= "#{ arquivo.name } #{ arquivo.surname }" %></td>
+            <td><%= arquivo.email %></td>
+            <td><%= arquivo.token %></td>
+            <td><%= arquivo.admission_date.strftime('%d/%m/%Y') %></td>
+            <td><%= number_to_currency(arquivo.available_amount) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @antigos, :param_name => :antigo %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-11">
+    <h2>Profissionais com menos de 1 ano de Registro</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Token</th>
+          <th>Data Admissão</th>
+          <th>Saldo</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @novos.each do |arquivo| %>
+          <tr>
+            <td><%= "#{ arquivo.name } #{ arquivo.surname }" %></td>
+            <td><%= arquivo.email %></td>
+            <td><%= arquivo.token %></td>
+            <td><%= arquivo.admission_date.strftime('%d/%m/%Y') %></td>
+            <td><%= number_to_currency(arquivo.available_amount) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <<%= paginate @novos, :param_name => :novo %>
+  </div>
+</div>
+
+<div class="btn-group">
+  <%= link_to 'Novo Arquivo', new_arquivo_path, class: "btn btn-info" %>
+</div>
