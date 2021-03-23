@@ -18,7 +18,7 @@ class Arquivo < ApplicationRecord
         ln['admission_date'] = Date.parse(ValidaData(ln['admission_date']))
         
         if arquivo.count > 0
-          arquivo.first.update_attributes(ln)
+          arquivo.first.update(ln)
           @countAtualizados +=1
         else
           arquivo.create!(ln)

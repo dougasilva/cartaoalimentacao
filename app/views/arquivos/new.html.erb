@@ -7,7 +7,8 @@
       <%= form_tag import_arquivos_path, multipart: true do %>
         <%= file_field_tag :file %>
         <br />
-        <%= submit_tag "Importar" %>
+        
+        <%= submit_tag "Importar", id:"btnImportar"%>
       <% end %>
     </div>
     </div>
